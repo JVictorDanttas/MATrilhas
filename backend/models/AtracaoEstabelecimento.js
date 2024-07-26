@@ -16,7 +16,7 @@ const AtracaoEstabelecimento = sequelize.define('AtracaoEstabelecimento', {
     },
     allowNull: false, // Não permite valores nulos
   },
-  estabeleicimento_id: {
+  estabelecimento_id: {
     type: DataTypes.INTEGER, // Tipo de dado inteiro
     references: {
       model: 'Estabelecimentos', // Referencia a tabela 'estabelecimentos'
