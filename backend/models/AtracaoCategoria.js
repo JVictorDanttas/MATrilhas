@@ -1,32 +1,34 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/db'); // Importa a configuração do banco de dados
+const sequelize = require('../config/db'); 
+const Atracao = require('./Atracao');
+const Categoria = require('./Categoria');
 
 // Define o modelo AtracaoCategoria que representa a tabela 'atracoes_categorias'
 const AtracaoCategoria = sequelize.define('AtracaoCategoria', {
   id: {
-    type: DataTypes.INTEGER, // Tipo de dado inteiro
-    autoIncrement: true, // Auto-incrementa o valor para cada novo registro
-    primaryKey: true, // Define como chave primária
+    type: DataTypes.INTEGER, 
+    autoIncrement: true, 
+    primaryKey: true,
   },
   atracao_id: {
-    type: DataTypes.INTEGER, // Tipo de dado inteiro
+    type: DataTypes.INTEGER, 
     references: {
-      model: 'Atracoes', // Referencia a tabela 'atracoes'
-      key: 'id' // Chave estrangeira
+      model: Atracao, 
+      key: 'id'
     },
-    allowNull: false, // Não permite valores nulos
+    allowNull: false, 
   },
   categoria_id: {
-    type: DataTypes.INTEGER, // Tipo de dado inteiro
+    type: DataTypes.INTEGER, 
     references: {
-      model: 'Categorias', // Referencia a tabela 'categorias'
-      key: 'id' // Chave estrangeira
+      model: Categoria,
+      key: 'id' 
     },
-    allowNull: false, // Não permite valores nulos
+    allowNull: false,
   },
 }, {
-  tableName: 'atracoes_categorias', // Nome da tabela no banco de dados
-  timestamps: false, // Desativa os timestamps automáticos
+  tableName: 'atracoes_categorias', 
+  timestamps: false, 
 });
 
 module.exports = AtracaoCategoria; // Exporta o modelo para uso em outros arquivos

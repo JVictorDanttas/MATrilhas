@@ -1,40 +1,41 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db'); // Importa a configuração do banco de dados
+const Estado = require('./Estado');
 
 // Define o modelo Destino que representa a tabela 'destinos'
 const Destino = sequelize.define('Destino', {
   id: {
-    type: DataTypes.INTEGER, // Tipo de dado inteiro
-    autoIncrement: true, // Auto-incrementa o valor para cada novo registro
-    primaryKey: true, // Define como chave primária
+    type: DataTypes.INTEGER,
+    autoIncrement: true, 
+    primaryKey: true, 
   },
   estado_id: {
-    type: DataTypes.INTEGER, // Tipo de dado inteiro
+    type: DataTypes.INTEGER,
     references: {
-      model: 'Estados', // Referencia a tabela 'estados'
-      key: 'id' // Chave estrangeira
+      model: Estado,
+      key: 'id' 
     },
-    allowNull: false, // Não permite valores nulos
+    allowNull: false, 
   },
   titulo: {
-    type: DataTypes.STRING, // Tipo de dado string
-    allowNull: false, // Não permite valores nulos
+    type: DataTypes.STRING, 
+    allowNull: false, 
   },
   slug: {
-    type: DataTypes.STRING, // Tipo de dado string
+    type: DataTypes.STRING,
   },
   descricao: {
-    type: DataTypes.TEXT, // Tipo de dado texto para descrições longas
+    type: DataTypes.TEXT,
   },
   latitude: {
-    type: DataTypes.DOUBLE, // Tipo de dado para coordenadas geográficas
+    type: DataTypes.STRING, 
   },
   longitude: {
-    type: DataTypes.DOUBLE, // Tipo de dado para coordenadas geográficas
+    type: DataTypes.STRING,
   },
 }, {
-  tableName: 'destinos', // Nome da tabela no banco de dados
-  timestamps: false, // Desativa os timestamps automáticos
+  tableName: 'destinos', 
+  timestamps: false, 
 });
 
-module.exports = Destino; // Exporta o modelo para uso em outros arquivos
+module.exports = Destino;

@@ -4,26 +4,26 @@ const sequelize = require('../config/db'); // Importa a configuração do banco 
 // Define o modelo Estado que representa a tabela 'estados'
 const Estado = sequelize.define('Estado', {
   id: {
-    type: DataTypes.INTEGER, // Tipo de dado inteiro
-    autoIncrement: true, // Auto-incrementa o valor para cada novo registro
-    primaryKey: true, // Define como chave primária
+    type: DataTypes.INTEGER, 
+    autoIncrement: true, 
+    primaryKey: true, 
   },
   titulo: {
-    type: DataTypes.STRING, // Tipo de dado string
-    allowNull: false, // Não permite valores nulos
+    type: DataTypes.STRING, 
+    allowNull: false, 
   },
   uf: {
-    type: DataTypes.STRING, // Tipo de dado string para a sigla do estado
+    type: DataTypes.STRING, 
   },
   iso: {
-    type: DataTypes.STRING, // Tipo de dado string para o código ISO do estado
+    type: DataTypes.STRING,
   },
   slug: {
-    type: DataTypes.STRING, // Tipo de dado string para o identificador amigável
+    type: DataTypes.STRING, 
   },
 }, {
-  tableName: 'estados', // Nome da tabela no banco de dados
-  timestamps: false, // Desativa os timestamps automáticos
+  tableName: 'estados', 
+  timestamps: false, 
 });
 
-module.exports = Estado; // Exporta o modelo para uso em outros arquivos
+module.exports = Estado; 

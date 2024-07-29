@@ -1,46 +1,47 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/db'); // Importa a configuração do banco de dados
+const sequelize = require('../config/db'); 
+const Destino = require('./Destino');
 
 // Define o modelo Atracao que representa a tabela 'atracoes'
 const Atracao = sequelize.define('Atracao', {
   id: {
-    type: DataTypes.INTEGER, // Tipo de dado inteiro
-    autoIncrement: true, // Auto-incrementa o valor para cada novo registro
-    primaryKey: true, // Define como chave primária
-  },
-  cidade_id: {
-    type: DataTypes.INTEGER, // Tipo de dado inteiro
-    references: {
-      model: 'Destinos', // Referencia a tabela 'destinos'
-      key: 'id' // Chave estrangeira
-    },
-    allowNull: false, // Não permite valores nulos
+    type: DataTypes.INTEGER, 
+    autoIncrement: true, 
+    primaryKey: true, 
   },
   titulo: {
-    type: DataTypes.STRING, // Tipo de dado string
-    allowNull: false, // Não permite valores nulos
+    type: DataTypes.STRING, 
+    allowNull: false, 
   },
   descricao: {
-    type: DataTypes.TEXT, // Tipo de dado texto para descrições longas
+    type: DataTypes.TEXT, 
   },
   bairro: {
-    type: DataTypes.STRING, // Tipo de dado string
+    type: DataTypes.STRING, 
   },
   rua: {
-    type: DataTypes.STRING, // Tipo de dado string
+    type: DataTypes.STRING, 
   },
   numero: {
-    type: DataTypes.INTEGER, // Tipo de dado inteiro
+    type: DataTypes.INTEGER, 
   },
   longitude: {
-    type: DataTypes.DOUBLE, // Tipo de dado para coordenadas geográficas
+    type: DataTypes.STRING, 
   },
   latitude: {
-    type: DataTypes.DOUBLE, // Tipo de dado para coordenadas geográficas
+    type: DataTypes.STRING, 
+  },
+  destino_id: {
+    type: DataTypes.INTEGER, 
+    references: {
+      model: Destino, 
+      key: 'id' 
+    },
+    allowNull: false,
   },
 }, {
-  tableName: 'atracoes', // Nome da tabela no banco de dados
-  timestamps: false, // Desativa os timestamps automáticos
+  tableName: 'atracoes',
+  timestamps: false, 
 });
 
-module.exports = Atracao; // Exporta o modelo para uso em outros arquivos
+module.exports = Atracao; 

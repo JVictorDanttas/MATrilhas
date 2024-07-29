@@ -1,28 +1,29 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db'); // Importa a configuração do banco de dados
+const Destino = require('./Destino');
 
 // Define o modelo DestinoImagem que representa a tabela 'destinos_imagens'
 const DestinoImagem = sequelize.define('DestinoImagem', {
   id: {
-    type: DataTypes.INTEGER, // Tipo de dado inteiro
-    autoIncrement: true, // Auto-incrementa o valor para cada novo registro
-    primaryKey: true, // Define como chave primária
+    type: DataTypes.INTEGER, 
+    autoIncrement: true, 
+    primaryKey: true, 
   },
-  cidade_id: {
-    type: DataTypes.INTEGER, // Tipo de dado inteiro
+  destino_id: {
+    type: DataTypes.INTEGER, 
     references: {
-      model: 'Destinos', // Referencia a tabela 'destinos'
-      key: 'id' // Chave estrangeira
+      model: Destino,
+      key: 'id' 
     },
-    allowNull: false, // Não permite valores nulos
+    allowNull: false, 
   },
   imagem: {
-    type: DataTypes.STRING, // Tipo de dado string para o caminho da imagem
-    allowNull: false, // Não permite valores nulos
+    type: DataTypes.STRING, 
+    allowNull: false, 
   },
 }, {
-  tableName: 'destinos_imagens', // Nome da tabela no banco de dados
-  timestamps: false, // Desativa os timestamps automáticos
+  tableName: 'destinos_imagens', 
+  timestamps: false, 
 });
 
-module.exports = DestinoImagem; // Exporta o modelo para uso em outros arquivos
+module.exports = DestinoImagem; 

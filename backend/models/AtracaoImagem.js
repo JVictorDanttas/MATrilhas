@@ -1,28 +1,29 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db'); // Importa a configuração do banco de dados
+const Atracao = require('./Atracao');
 
 // Define o modelo AtracaoImagem que representa a tabela 'atracoes_imagens'
 const AtracaoImagem = sequelize.define('AtracaoImagem', {
   id: {
-    type: DataTypes.INTEGER, // Tipo de dado inteiro
-    autoIncrement: true, // Auto-incrementa o valor para cada novo registro
-    primaryKey: true, // Define como chave primária
+    type: DataTypes.INTEGER,
+    autoIncrement: true,
+    primaryKey: true,
   },
   atracao_id: {
-    type: DataTypes.INTEGER, // Tipo de dado inteiro
+    type: DataTypes.INTEGER, 
     references: {
-      model: 'Atracoes', // Referencia a tabela 'atracoes'
-      key: 'id' // Chave estrangeira
+      model: Atracao, 
+      key: 'id'
     },
-    allowNull: false, // Não permite valores nulos
+    allowNull: false, 
   },
   imagem: {
-    type: DataTypes.STRING, // Tipo de dado string para o caminho da imagem
-    allowNull: false, // Não permite valores nulos
+    type: DataTypes.STRING, 
+    allowNull: false, 
   },
 }, {
-  tableName: 'atracoes_imagens', // Nome da tabela no banco de dados
-  timestamps: false, // Desativa os timestamps automáticos
+  tableName: 'atracoes_imagens', 
+  timestamps: false,
 });
 
-module.exports = AtracaoImagem; // Exporta o modelo para uso em outros arquivos
+module.exports = AtracaoImagem;

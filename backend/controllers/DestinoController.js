@@ -8,13 +8,13 @@ exports.getAllDestinations = async (req, res) => {
         { model: DestinoImagem, as: 'imagens' }
       ]
     });
+
     res.json(destinos);
   } catch (error) {
     res.status(500).json({ error: 'Erro ao obter destinos' });
   }
 };
 
-// Obtém um destino pelo ID
 exports.getDestinationById = async (req, res) => {
   try {
     const destino = await Destino.findByPk(req.params.id, {

@@ -1,4 +1,4 @@
-const { Atracao, AtracaoImagem, AtracaoEstabelecimento } = require('../models');
+const { Atracao, AtracaoImagem, AtracaoEstabelecimento, Estabelecimento, Categoria } = require('../models');
 
 // Obtém todas as atrações
 exports.getAllAttractions = async (req, res) => {
@@ -6,12 +6,11 @@ exports.getAllAttractions = async (req, res) => {
     const atracoes = await Atracao.findAll({
       include: [
         { model: AtracaoImagem, as: 'imagens' },
-        { model: AtracaoEstabelecimento, as: 'estabelecimentos' }
       ]
     });
     res.json(atracoes);
   } catch (error) {
-    res.status(500).json({ error: 'Erro ao obter atrações' });
+    res.status(500).json({ erro: error});
   }
 };
 

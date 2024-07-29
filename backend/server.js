@@ -1,22 +1,19 @@
 const express = require('express');
-const cors = require('cors'); // Importa o pacote cors
+const cors = require('cors');
+const sequelize = require('./config/db');
+const routes = require('./routes/index');
+require('dotenv').config(); 
+
 const app = express();
-const sequelize = require('./config/db'); // Importa a configuração do banco de dados
-const atracaoRoutes = require('./routes/atracaoRoutes'); // Importa as rotas de atração
-const destinoRoutes = require('./routes/destinoRoutes'); // Importa as rotas de destino
-require('dotenv').config(); // Carrega variáveis de ambiente
+const path = require('path');
+app.use(cors());
+app.use(express.json());
+app.use(routes);
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
-app.use(cors()); // Adiciona o middleware CORS para permitir requisições de qualquer origem
-app.use(express.json()); // Permite que o Express parseie JSON
-
-// Define as rotas
-app.use('/atracoes', atracaoRoutes);
-app.use('/destinos', destinoRoutes);
-
-// Inicia o servidor e a conexão com o banco de dados
 const startServer = async () => {
   try {
-    await sequelize.authenticate(); // Testa a conexão com o banco de dados
+    await sequelize.authenticate();
     console.log('Conectado ao banco de dados PostgreSQL');
     app.listen(process.env.PORT, () => {
       console.log(`Servidor rodando na porta ${process.env.PORT}`);
@@ -26,4 +23,4 @@ const startServer = async () => {
   }
 };
 
-startServer(); // Inicia o servidor
+startServer();

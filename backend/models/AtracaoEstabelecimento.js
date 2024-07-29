@@ -1,32 +1,34 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/db'); // Importa a configuração do banco de dados
+const sequelize = require('../config/db'); 
+const Atracao = require('./Atracao');
+const Estabelecimento = require('./Estabelecimento');
 
 // Define o modelo AtracaoEstabelecimento que representa a tabela 'atracoes_estabelecimentos'
 const AtracaoEstabelecimento = sequelize.define('AtracaoEstabelecimento', {
   id: {
-    type: DataTypes.INTEGER, // Tipo de dado inteiro
-    autoIncrement: true, // Auto-incrementa o valor para cada novo registro
-    primaryKey: true, // Define como chave primária
+    type: DataTypes.INTEGER, 
+    autoIncrement: true, 
+    primaryKey: true, 
   },
   atracao_id: {
-    type: DataTypes.INTEGER, // Tipo de dado inteiro
+    type: DataTypes.INTEGER, 
     references: {
-      model: 'Atracoes', // Referencia a tabela 'atracoes'
-      key: 'id' // Chave estrangeira
+      model: Atracao, 
+      key: 'id' 
     },
-    allowNull: false, // Não permite valores nulos
+    allowNull: false, 
   },
   estabelecimento_id: {
-    type: DataTypes.INTEGER, // Tipo de dado inteiro
+    type: DataTypes.INTEGER, 
     references: {
-      model: 'Estabelecimentos', // Referencia a tabela 'estabelecimentos'
-      key: 'id' // Chave estrangeira
+      model: Estabelecimento, 
+      key: 'id' 
     },
-    allowNull: false, // Não permite valores nulos
+    allowNull: false, 
   },
 }, {
-  tableName: 'atracoes_estabelecimentos', // Nome da tabela no banco de dados
-  timestamps: false, // Desativa os timestamps automáticos
+  tableName: 'atracoes_estabelecimentos', 
+  timestamps: false, 
 });
 
-module.exports = AtracaoEstabelecimento; // Exporta o modelo para uso em outros arquivos
+module.exports = AtracaoEstabelecimento; 
