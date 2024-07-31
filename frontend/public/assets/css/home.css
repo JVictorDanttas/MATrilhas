@@ -2,8 +2,7 @@
     padding-top: 70px;
     background: url('../img/img-home.png') no-repeat center center;
     background-size: cover;
-    height: 80vh;
-    max-height: 480px;
+    height: 70vh;
     width: 100%;
 }
 
@@ -14,8 +13,9 @@
 }
 
 .destinations{
-    margin-top: -10%;
+    width: 100%;
     display: flex;
+    margin-top: -10vh;
     flex-direction: column;
     justify-content: center;
     gap: 1rem;

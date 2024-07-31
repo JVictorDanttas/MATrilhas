@@ -1,4 +1,5 @@
 const baseApiUrl = "http://localhost:3000";
+const cardContainer = document.getElementById('destinations__cards');
 
 async function fetchDestinos() {
     try {
@@ -7,11 +8,10 @@ async function fetchDestinos() {
             throw new Error('Network response was not ok');
         }
         const destinos = await response.json();
-        console.log(destinos)
+        
         // Preenche o card com os dados retornados
-        const cardContainer = document.getElementById('destinations__cards');
         if(destinos.length==0){
-            cardContainer.textContent = "Não há destinos cadastrados";
+            cardContainer.innerHTML = "<span class='warning'>Não há destinos cadastrados</span>";
         }
         destinos.forEach(destino => {
             const cardHTML = `
@@ -29,9 +29,7 @@ async function fetchDestinos() {
         });
     } catch (error) {
         console.error('Failed to fetch destinos:', error);
-        destinos.forEach(destino => {
-            cardContainer.innerHTML = 'Ocorreu um erro ao carregar destinos';
-        });
+        cardContainer.innerHTML = "<span class='warning'>Ocorreu um erro ao carregar destinos</span>";
     }
 }
 

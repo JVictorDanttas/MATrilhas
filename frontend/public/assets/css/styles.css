@@ -21,6 +21,11 @@ body{
   padding: 0 var(--size-padding-x);
 }
 
+.warning{
+  font-size: 1.5rem;
+  color: #E5A000;
+}
+
 .title{
   font-size: 1.5rem;
   color: white;
