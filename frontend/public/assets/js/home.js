@@ -16,7 +16,7 @@ async function fetchDestinos() {
         destinos.forEach(destino => {
             const cardHTML = `
                 <div class="card">
-                    <a href="atrativos/${destino.id}" class="card-link">
+                    <a href="destinos/${destino.id}/atracoes" class="card-link">
                         <img src="${baseApiUrl}${destino.imagens[0].imagem}" alt="${destino.titulo}">
                         <div class="card-content">
                             <h3>${destino.titulo}</h3>

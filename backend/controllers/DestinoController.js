@@ -1,4 +1,4 @@
-const { Destino, DestinoImagem } = require('../models');
+const { Destino, DestinoImagem, Atracao, AtracaoImagem } = require('../models');
 
 // Obtém todos os destinos
 exports.getAllDestinations = async (req, res) => {
@@ -19,7 +19,16 @@ exports.getDestinationById = async (req, res) => {
   try {
     const destino = await Destino.findByPk(req.params.id, {
       include: [
-        { model: DestinoImagem, as: 'imagens' }
+        { 
+          model: DestinoImagem, 
+          as: 'imagens'},
+        { 
+          model: Atracao, 
+          as: 'atracoes',
+          include: [
+            { model: AtracaoImagem, as: 'imagens' },
+          ]
+        }
       ]
     });
     if (destino) {
