@@ -27,7 +27,7 @@ async function fetchAtracoesByDestino() {
 
             const cardHTML = `
                 <div class="card">
-                    <a href="atracoes/${atracao.id}" class="card-link">
+                    <a href="/atracoes/${atracao.id}" class="card-link">
                         <img src="${imagem_url}" alt="foto-${atracao.titulo}">
                         <div class="card-content">
                             <h3>${atracao.titulo}</h3>

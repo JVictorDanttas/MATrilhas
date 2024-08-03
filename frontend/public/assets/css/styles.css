@@ -111,3 +111,15 @@ text-decoration: none;
 color: inherit;
 display: block;
 }
+
+.arrows{
+  margin-top: 2rem;
+  display: flex;
+  gap: 2rem;
+  align-self: flex-start;
+}
+.arrows .arrow{
+  height: 32px;
+  width: 32px;
+  cursor: pointer;
+}
