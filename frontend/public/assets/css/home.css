@@ -1,6 +1,7 @@
 .home{
     padding-top: 70px;
     background: url('../img/img-home.png') no-repeat center center;
+    background-clip: padding-box;
     background-size: cover;
     height: 70vh;
     width: 100%;

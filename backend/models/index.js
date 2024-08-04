@@ -15,7 +15,6 @@ Atracao.belongsToMany(Estabelecimento, { through: AtracaoEstabelecimento, foreig
 Atracao.belongsTo(Destino, { foreignKey: 'destino_id' });
 
 AtracaoImagem.belongsTo(Atracao, { foreignKey: 'atracao_id' });
-AtracaoImagem.belongsTo(Atracao, { foreignKey: 'atracao_id' });
 
 Destino.hasMany(Atracao, { foreignKey: 'destino_id', as: 'atracoes'});
 Destino.hasMany(DestinoImagem, { foreignKey: 'destino_id', as: 'imagens' });

@@ -1,4 +1,4 @@
-const { Atracao, AtracaoImagem, AtracaoEstabelecimento, Estabelecimento, Categoria } = require('../models');
+const { Atracao, AtracaoImagem, AtracaoEstabelecimento, Estabelecimento, Categoria, AtracaoCategoria } = require('../models');
 
 // Obtém todas as atrações
 exports.getAllAttractions = async (req, res) => {
@@ -20,7 +20,8 @@ exports.getAttractionById = async (req, res) => {
     const atracao = await Atracao.findByPk(req.params.id, {
       include: [
         { model: AtracaoImagem, as: 'imagens' },
-        { model: AtracaoEstabelecimento, as: 'estabelecimentos' }
+        { model: Categoria, as: 'categorias' },
+        { model: Estabelecimento, as: 'estabelecimentos' }
       ]
     });
     if (atracao) {
@@ -29,6 +30,7 @@ exports.getAttractionById = async (req, res) => {
       res.status(404).json({ error: 'Atração não encontrada' });
     }
   } catch (error) {
-    res.status(500).json({ error: 'Erro ao obter a atração' });
+    res.status(500).json(error);
+    //res.status(500).json({ error: 'Erro ao obter a atração' });
   }
 };

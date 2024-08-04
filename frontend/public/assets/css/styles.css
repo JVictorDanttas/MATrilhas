@@ -118,7 +118,7 @@ display: block;
   gap: 2rem;
   align-self: flex-start;
 }
-.arrows .arrow{
+.arrows .arrows__arrow{
   height: 32px;
   width: 32px;
   cursor: pointer;

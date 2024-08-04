@@ -1,4 +1,7 @@
-.atracoes{
+.container{ 
+    padding: 0 var(--size-padding-x);
+}
+.atracao{
     position: relative;
     padding-top: 70px;
     display: flex;
@@ -6,13 +9,15 @@
     align-items: center;
 }
 
-.atracoes__banner {
+.atracao__banner {
     margin-top: 20px;
     margin-bottom: 20px;
     width: 80%;
-    height: auto;
+    max-height: 480px;
 }
-.atracoes__banner img {
+.atracao__banner img {
+    height: 100%;
+    width: 100%;
     border-radius: 10px;
 }
 
