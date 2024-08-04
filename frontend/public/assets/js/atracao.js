@@ -4,6 +4,7 @@ const atracaoDescricao = document.querySelector('.atracao__descricao');
 const atracaoBannerImg = document.querySelector('.atracao__banner-img');
 const estabelecimentosLista = document.querySelector('.atracao__estabelecimentos-lista');
 const atracaoMapa = document.querySelector('.atracao__mapa');
+const btnMap = document.getElementById('atracao-btn-map');
 
 async function fetchAtracaoById() {
     try {
@@ -39,9 +40,8 @@ async function fetchAtracaoById() {
             });
         }
 
-        // Aqui você pode adicionar código para preencher o mapa, se necessário
-        // Por exemplo, você pode usar a API de mapas do Google ou qualquer outra de sua escolha
-
+        initMap(atracao.latitude, atracao.longitude);
+        
     } catch (error) {
         console.error('Failed to fetch atracao:', error);
         atracaoTitulo.textContent = "Erro ao carregar atração";
@@ -63,6 +63,20 @@ function getAtracaoIdUrl(){
         console.log('atracao_id:' + atracaoId);
         return atracaoId;
     }
+}
+
+function initMap(lat, lng) {
+    const map = L.map('atracao__mapa').setView([lat, lng], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    L.marker([lat, lng]).addTo(map)
+    .bindPopup('Atração')
+    .openPopup();
+
+    btnMap.href = `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
 }
 
 document.addEventListener('DOMContentLoaded', function(){

@@ -3,3 +3,5 @@ document.querySelectorAll('.arrows__arrow--back').forEach(button => {
         window.history.back();
     });
 });
+
+

@@ -7,84 +7,61 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 80vh;
 }
 
 .atracao__banner {
     margin-top: 20px;
     margin-bottom: 20px;
     width: 80%;
-    max-height: 480px;
 }
 .atracao__banner img {
-    height: 100%;
     width: 100%;
+    max-height: 480px;
+    object-fit: cover;
     border-radius: 10px;
 }
 
-.content {
-    padding: 50px;
-}
-
-.info {
-    padding: 15px;
-    background-color: #fff;
-    border-radius: 5px;
-    font-family: 'Inter';
+.atracao__titulo, .atracao__estabelecimentos-titulo{
+    font-size: 1.5rem;
     font-weight: 600;
 }
 
-.info p {
-    color: #828282;
-    font-family: 'Inter';   
-    font-weight: 100;
+.atracao__body{
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    margin-bottom: 2rem;
 }
 
-.map {
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    text-align: center;
+.atracao__informacoes{
+    margin-bottom: 1rem;
 }
 
-.map-card {
-    width: 100%;
-    max-width: 500px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    background-color: white;
+.atracao__localizacao{
+    height: 100%;
+    width: 360px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 10px;
+    border: 2px solid #E5A000;
 }
-  
-.map-container {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 */
-    height: 0;
-    overflow: hidden;
-}
-  
-#map {
-    position: absolute;
-    top: 0;
-    left: 0;
+.atracao__localizacao .atracao__mapa{
     width: 100%;
     height: 100%;
+    min-height: 300px;
 }
-  
-.button-container {
-    padding: 20px;
+.atracao__button{
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.1rem;
+    background-color: #E5A000;
+    color: black;
 }
-  
-.btn-location {
-    background-color: #ff6f00;
-    border: none;
-    padding: 10px 20px;
-    font-size: 18px;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-    text-align: center;
-}
-  
-.btn-location:hover {
-    background-color: #e65c00;
+
+@media (max-width:720px){
+    .atracao__body{
+        flex-direction: column;
+    }
 }
